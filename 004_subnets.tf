@@ -15,7 +15,10 @@
           vcn_id = "${oci_core_vcn.test_vcn.id}"
 
           #Optional
-          defined_tags = {"netcloud01.GPCode" = "NC.ENG.IT.VPN.TEST"}
+          defined_tags = "${merge(
+                      local.common_tags,
+                      map("${var.tag_namespace_key}.${var.tag_key}", "${var.tag_value}")
+                  )}"
           dhcp_options_id = "${oci_core_dhcp_options.test_dhcp_options.id}"
           count = "${length(var.subnet_display_name)}"
           display_name = "${var.subnet_display_name[count.index]}"

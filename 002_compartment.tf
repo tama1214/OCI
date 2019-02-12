@@ -12,5 +12,8 @@ resource "oci_identity_compartment" "test_compartment" {
     name = "${var.compartment_name}"
 
     #Optional
-    defined_tags = {"netcloud01.GPCode" = "NC.ENG.IT.VPN.TEST"}
+    defined_tags = "${merge(
+                local.common_tags,
+                map("${var.tag_namespace_key}.${var.tag_key}", "${var.tag_value}")
+            )}"
 }

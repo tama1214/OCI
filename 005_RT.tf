@@ -17,6 +17,9 @@ resource "oci_core_route_table" "test_route_table" {
     vcn_id = "${oci_core_vcn.test_vcn.id}"
 
     #Optional
-    defined_tags = {"netcloud01.GPCode" = "NC.ENG.IT.VPN.TEST"}
+    defined_tags = "${merge(
+                local.common_tags,
+                map("${var.tag_namespace_key}.${var.tag_key}", "${var.tag_value}")
+            )}"
     display_name = "${var.route_table_display_name}"
 }

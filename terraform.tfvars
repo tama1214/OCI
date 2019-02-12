@@ -38,4 +38,17 @@ dhcp_options_display_name = "TEST-DHCP"
 
 # -- Compartment
 compartment_description = "temp_TEST_compartment"
-compartment_name = "TEST1-compartment"
+compartment_name = "TEST12-compartment"
+
+# -- IAM groups
+group_description = ["Test_NC_Admins IAM Group NC_Admins", "Test_NC_NetwAdmins IAM Group NC_NetwAdmins", "Test_NC_EnvAdmins IAM Group NC_EnvAdmins", "Test_NC_Testers IAM Group NC_Testers"]
+group_name = ["Test_NC_Admins", "Test_NC_NetwAdmins", "Test_NC_EnvAdmins", "Test_NC_Testers"]
+
+# -- IAM Policyes
+policy_description = "Test policy descryption"
+policy_name = "Test-Policy"
+
+# -- TAGs
+tag_namespace_key = "netcloud01"
+tag_key = "GPCode"
+tag_value = "NC.ENG.IT.VPN.TEST"

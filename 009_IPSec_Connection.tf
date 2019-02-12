@@ -11,6 +11,9 @@ resource "oci_core_ipsec" "test_ip_sec_connection" {
     static_routes = "${var.ip_sec_connection_static_routes}"
 
     #Optional
-    defined_tags = {"netcloud01.GPCode" = "NC.ENG.IT.VPN.TEST"}
+    defined_tags = "${merge(
+                local.common_tags,
+                map("${var.tag_namespace_key}.${var.tag_key}", "${var.tag_value}")
+            )}"
     display_name = "${var.ip_sec_connection_display_name}"
 }

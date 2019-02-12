@@ -9,7 +9,10 @@ resource "oci_core_drg" "test_drg" {
     compartment_id = "${oci_identity_compartment.test_compartment.id}"
 
     #Optional
-    defined_tags = {"netcloud01.GPCode" = "NC.ENG.IT.VPN.TEST"}
+    defined_tags = "${merge(
+                local.common_tags,
+                map("${var.tag_namespace_key}.${var.tag_key}", "${var.tag_value}")
+            )}"
     display_name = "${var.drg_display_name}"
 }
 

@@ -23,6 +23,9 @@ resource "oci_core_dhcp_options" "test_dhcp_options" {
     vcn_id = "${oci_core_vcn.test_vcn.id}"
 
     #Optional
-    defined_tags = {"netcloud01.GPCode" = "NC.ENG.IT.VPN.TEST"}
+    defined_tags = "${merge(
+                local.common_tags,
+                map("${var.tag_namespace_key}.${var.tag_key}", "${var.tag_value}")
+            )}"
     display_name = "${var.dhcp_options_display_name}"
 }

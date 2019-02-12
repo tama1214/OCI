@@ -10,7 +10,10 @@
             compartment_id = "${oci_identity_compartment.test_compartment.id}"
 
             #Optional
-            defined_tags = {"netcloud01.GPCode" = "NC.ENG.IT.VPN.TEST"}     # VCN tag (for billing)
+            defined_tags = "${merge(
+                        local.common_tags,
+                        map("${var.tag_namespace_key}.${var.tag_key}", "${var.tag_value}")
+                    )}"            
             display_name = "${var.vcn_display_name}"                                   # VCN name
 
           }
